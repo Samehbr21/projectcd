@@ -1,4 +1,4 @@
 ---
-	# tasks file for build
+# tasks file for build
 - name: build app
-  shell: ng build 
+  shell: ng build
