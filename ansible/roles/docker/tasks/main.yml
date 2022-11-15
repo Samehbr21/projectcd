@@ -1,5 +1,6 @@
 ---
-- name: create image docker
+# tasks file for docker
+- name: create
   docker_image:
     name: ProjectCD
     build:
