@@ -10,5 +10,26 @@ pipeline
 	            }
 	     
 	        }
+			stage(' install node modules ') {
+	            steps {
+	            sh ' npm install' 
+	            
+	            }
+	        }
+	
+	/*
+	        stage(' BUILD ') {
+	            steps {
+	            sh ' npm run build --prod'
+	            }
+	        } */
+	
+	        stage(' BUILD ') {
+	            steps {
+	                script {
+	                    sh ' ansible-playbook ansible/build.yml -i ansible/inventory/host.yml '
+	                 }
+	            }
+	        }
 		 }
 	}
