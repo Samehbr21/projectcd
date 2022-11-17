@@ -5,10 +5,9 @@
     username: samehbrdocker
     password: sameh2016
 
-- name: Push to docker hub
+- name: Tag and push to docker hub
   docker_image:
     name: devops:latest
     repository: samehbrdocker/devops
     tag: end
     push: yes
-
