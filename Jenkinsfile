@@ -34,7 +34,7 @@ pipeline
 
 stage(' DOCKER Registry ') {
 	            steps {
-	                withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+					withDockerRegistry(credentialsId: 'docker-hub', url: '') {
 	                script {
                       sh "ansible-playbook ansible/docker.yml -i ansible/inventory/host.yml -K -vvv"
 	                 }
