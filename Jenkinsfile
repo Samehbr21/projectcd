@@ -39,5 +39,14 @@ pipeline
   }
 }
 
+stage('Docker hub Build and Push') {
+	       steps {
+	         withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+	           sh 'printenv'
+	           sh ' docker build -t samehbrdocker/devops:latest .'
+	           sh 'docker push samehbrdocker/devops:latest '
+			 }
+		   }
+}
 		 }
 	}
