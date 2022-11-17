@@ -10,19 +10,12 @@ pipeline
 	            }
 	     
 	        }
-			stage(' install node modules ') {
+			stage(' Node modules ') {
 	            steps {
 	            sh ' npm install' 
 	            
 	            }
 	        }
-	
-	/*
-	        stage(' BUILD ') {
-	            steps {
-	            sh ' npm run build --prod'
-	            }
-	        } */
 	
 	        stage(' BUILD ') {
 	            steps {
@@ -31,7 +24,7 @@ pipeline
 	                 }
 	            }
 	        }
-			stage('docker') {
+			stage('DOCKER ') {
   steps {
     script{
       sh "ansible-playbook ansible/docker.yml -i ansible/inventory/host.yml -K -vvv"
@@ -39,12 +32,15 @@ pipeline
   }
 }
 
-stage(' Docker HUB '){
-	           	  steps{
-	               		 sh 'docker build -t samehbrdocker/devops .'
-	               		 sh 'docker login -u samehbrdocker -p sameh2016'
-	               		 sh 'docker push samehbrdocker/devops'
-	            	}
-	      		  }
+stage(' DOCKER Rregistry ') {
+	            steps {
+	                withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+	                script {
+	                    sh ' ansible-playbook ansible/docker-registry.yml -i ansible/inventory/host.yml '
+	                 }
+	                 }
+	            }
+	        }
+
 		 }
 	}
