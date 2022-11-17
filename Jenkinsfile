@@ -43,7 +43,7 @@ stage(' Docker HUB '){
 	           	  steps{
 	               		 sh 'docker build -t samehbrdocker/devops .'
 	               		 sh 'docker login -u samehbrdocker -p sameh2016'
-	               		 sh 'docker push samehbrdocker'
+	               		 sh 'docker push samehbrdocker/devops'
 	            	}
 	      		  }
 		 }
