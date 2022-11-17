@@ -1,10 +1,10 @@
 ---
 - name: create image docker
-	docker_image:
-	  name: devops
-	  build: 
-	  path: /var/lib/jenkins/workspace/ProjectCD
-	  pull: no
+  docker_image:
+    name: devops
+    build:
+    path: /var/lib/jenkins/workspace/ProjectCD
+    pull: no
   source: build
   state: present
   force_source: true
@@ -15,4 +15,4 @@
     state: started
     recreate: true
     ports:
-     - "4200:80"   
+     - "4200:80"
