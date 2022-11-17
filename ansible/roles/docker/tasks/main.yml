@@ -1,10 +1,9 @@
 ---
-# tasks file for docker
 - name: create image docker
   docker_image:
-    name: Myapp
+    name: devops
     build:
-    path: /var/lib/jenkins/workspace/Myapp
+    path: /var/lib/jenkins/workspace/ProjectCD
     pull: no
   source: build
   state: present
@@ -12,7 +11,7 @@
 - name: run container docker
   docker_container:
     name: myapp_container
-    image: Myapp:latest
+    image: devops:latest
     state: started
     recreate: true
     ports:
