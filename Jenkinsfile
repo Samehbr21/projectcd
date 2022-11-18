@@ -39,7 +39,7 @@ stage(' DOCKER Registry ') {
 	                 }
 	                 }
 	            }
-	        }
+		 
 
 		 }
 	}
