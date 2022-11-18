@@ -9,5 +9,6 @@
   docker_image:
     name: devops:latest
     repository: samehbrdocker/devops
+    source: local
     tag: end
     push: yes
